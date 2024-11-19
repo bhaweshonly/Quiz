@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            font-family: Arial, sans-serif;
+        }
+        header{
+            background: fixed;
+        }
+        h2{
+            color: blue;
+        }
+        nav {
+            background-color: brown;
+            height: 40px;
+            font-size: larger;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border: 1px dotted white;
+        }
+        p {
+            border: 1px dotted rebeccapurple;
+            width: auto;
+            padding: 10px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            padding: 20px;
+            width: 40%;
+            margin: 20px auto;
+        }
+        .question {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        .question label {
+            display: block;
+            margin: 5px 0;
+        }
+        #next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: brown;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #next-btn:hover:hover{
+            transform: scale(1.05);
+        }
+        footer{
+            text-align: center;
+            background-color: darkred;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navv">QUIZ</nav>
+        <h2>NOTE :</h2>
+        <p>The quiz should consist of multiple questions with multiple-choice answers.
+            <br>Each question has options, and only one option is correct.
+            <br>A correct answer earns points for scoring.
+        </p>
+    </header>
+
+    <form action="">
+        <div class="container">
+            <h3 id="category-title">Maths</h3>
+            <div class="contain"></div>
+            <button type="button" id="next-btn">Next Question</button> 
+        </div>
+    </form>
+    <footer>
+        <p>Copyright is a legal protection granted to creators of original works...</p>
+    </footer>
+    
+    <script>
+        // Sample questions and answers for Maths
+        const questions = [
+            {
+                question: "A train 150 meters long is running at 45 km/h. How much time will it take to cross a bridge 300 meters long?",
+                options: ["20 seconds", "30 seconds", "40 seconds", "50 seconds"],
+                answer: "40 seconds"
+            },
+            {
+                question: "A person travels 60 km at a speed of 30 km/h and returns at 20 km/h. What is their average speed for the entire journey?",
+                options: ["24 km/h", "25 km/h", "26 km/h", "27 km/h"],
+                answer: "24 km/h"
+            },
+            {
+                question: "In a class of 60 students, 25 play football, 30 play cricket, and 10 play both. How many students do not play any of these games?",
+                options: ["10", "15", "20", "25"],
+                answer: "15"
+            },
+            {
+                question: "A number when divided by 7 leaves a remainder of 4. What will the remainder be when its square is divided by 7?",
+                options: ["0", "1", "2", "4"],
+                answer: "2"
+            },
+            {
+                question: "A man spends 1/3 of his salary on rent, 1/5 on food, and saves the rest. If he saves ₹12,000, what is his total salary?",
+                options: ["₹18,000", "₹20,000", "₹24,000", "₹30,000"],
+                answer: "₹30,000"
+            },
+            {
+                question: "A boat takes 2 hours to travel downstream for 24 km and 3 hours to travel upstream for 12 km. What is the speed of the boat in still water?",
+                options: ["8 km/h", "10 km/h", "12 km/h", "14 km/h"],
+                answer: "10 km/h"
+            },
+            {
+                question: "A sequence is given: 2, 6, 12, 20, 30, ... What is the 7th term?",
+                options: ["56", "62", "72", "90"],
+                answer: "62"
+            }
+        ];
+        
+        const container = document.querySelector('.contain');
+        const nextButton = document.getElementById('next-btn');
+
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0; // To track correct answers
+
+        document.getElementById('category-title').textContent = "GK"; 
+
+        function showQuestion(index) {
+            // Clear the previous question
+            container.innerHTML = '';
+
+            const q = questions[index];
+
+            // Create the question section
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+
+            // Create the question text
+            const questionText = document.createElement('p');
+            questionText.textContent = `${index + 1}. ${q.question}`;
+            questionDiv.appendChild(questionText);
+
+            // Loop through the options and create radio buttons for answers
+            q.options.forEach(option => {
+                const optionLabel = document.createElement('label');
+                const optionInput = document.createElement('input');
+                optionInput.type = 'radio';
+                optionInput.name = `question${index}`;
+                optionInput.value = option;
+
+                // Add the label and input to the question div
+                optionLabel.appendChild(optionInput);
+                optionLabel.appendChild(document.createTextNode(option));
+                questionDiv.appendChild(optionLabel);
+            });
+
+            // Append the question to the container
+            container.appendChild(questionDiv);
+        }
+
+        // Function to check if the selected answer is correct
+        function checkAnswer(index) {
+            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+            if (selectedOption && selectedOption.value === questions[index].answer) {
+                correctAnswersCount++;
+            }
+        }
+
+        // Initially show the first question
+        showQuestion(currentQuestionIndex);
+
+        // Add event listener to the "Next" button
+        nextButton.addEventListener('click', function() {
+            checkAnswer(currentQuestionIndex); // Check the answer for the current question
+
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            } else {
+                alert(`You have completed the quiz! Your score is: ${correctAnswersCount} out of ${questions.length}`);
+            }
+        });
+    </script>
+</body>
+</html>

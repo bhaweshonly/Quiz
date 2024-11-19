@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction</title>
+</head>
+<body>
+    <script>
+       const userConfirmed = window.confirm(
+    "Welcome Screen\n\n" +
+    "Greet the user with a welcome message.\n" +
+    "Display the app's purpose and basic instructions.\n" +
+    "Include a 'Start Quiz' button.\n\n" +
+    "Quiz Format\n\n" +
+    "Each question is displayed one at a time.\n" +
+    "Provide multiple-choice options (e.g., radio buttons).\n" +
+    "Highlight that only one option can be selected per question.\n\n" +
+    "Timer (Optional)\n\n" +
+    "Include a timer for each question or the entire quiz.\n" +
+    "Warn users about automatic submission when time expires.\n\n" +
+    "Navigation\n\n" +
+    "Add 'Next' and 'Previous' buttons for navigation.\n" +
+    "Highlight unanswered questions before submission.\n\n" +
+    "Scoring Rules\n\n" +
+    "Inform users about the scoring system:\n" +
+    "- Correct answers earn points.\n" +
+    "- Deduction for wrong answers (if negative marking is enabled).\n" +
+    "- No penalty for skipped questions.\n\n" +
+    "Submission\n\n" +
+    "Include a 'Submit Quiz' button to finalize answers.\n" +
+    "Confirm submission via a dialog box (e.g., 'Are you sure?').\n\n" +
+    "Result Display\n\n" +
+    "Show the user's score immediately after submission.\n" +
+    "Optionally display correct answers and explanations.\n" +
+    "Provide feedback like 'Great job!' or 'Better luck next time!'\n\n" +
+    "Leaderboard (Optional)\n\n" +
+    "Show a leaderboard with top scores (if applicable).\n" +
+    "Allow users to compare their performance with others."
+);
+
+if (userConfirmed) {
+    window.location.href = "welcome.html";
+}
+    </script>
+</body>
+</html>

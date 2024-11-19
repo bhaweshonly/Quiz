@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: 1px solid red;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        h1 {
+            display: inline-block;
+            margin: 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .index {
+            text-align: center;
+            width: 10%;
+        }
+        .name {
+            width: 30%;
+        }
+        .solved, .attempted {
+            text-align: center;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <a href="welcome.html">Dashboard</a>
+        <table>
+            <thead>
+                <tr>
+                    <th class="index">Rank</th>
+                    <th class="name">Name</th>
+                    <th class="solved">Solved Questions</th>
+                    <th class="attempted">Attempted Questions</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const leaderboardData = [
+            { rank: 1, name: 'Bhawesh', solved: "", attempted: "" },
+            { rank: 2, name: 'Samarth', solved: "", attempted:  "" },
+            { rank: 3, name: '', solved: "", attempted: "" },
+            { rank: 4, name: '', solved: "", attempted: "" },
+            { rank: 5, name: '', solved: "", attempted: "" },
+        ];
+
+        const leaderboardBody = document.getElementById('leaderboard-body');
+
+        leaderboardData.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="index">${item.rank}</td>
+                <td class="name">${item.name}</td>
+                <td class="solved">${item.solved}</td>
+                <td class="attempted">${item.attempted}</td>
+            `;
+            leaderboardBody.appendChild(row);
+        });
+    </script>
+
+</body>
+</html>
